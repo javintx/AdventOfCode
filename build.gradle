@@ -6,11 +6,6 @@ wrapper {
     gradleVersion = "7.2"
 }
 
-dependencies {
-    implementation project(":1")
-    //implementation project(":core")
-}
-
 allprojects {
     group "com.aoc"
     version "1.0.0"
@@ -25,17 +20,8 @@ subprojects {
 
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(11)
+            languageVersion = JavaLanguageVersion.of(17)
         }
     }
 
-    dependencies {
-        testImplementation "org.mockito:mockito-junit-jupiter:3.9.0"
-        testImplementation "org.junit.jupiter:junit-jupiter-params:5.7.0"
-        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
-    }
-
-    test {
-        useJUnitPlatform()
-    }
 }
