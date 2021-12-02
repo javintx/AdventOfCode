@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+import static java.lang.System.out;
+
 public class SonarSweep {
   private SonarSweep() {
   }
@@ -14,17 +16,11 @@ public class SonarSweep {
   public static void main(String... args) {
     var sonarSweep = new SonarSweep();
 
-    var measurements = loadFirstMeasurements("testInput.txt");
-    sonarSweep.solve(measurements);
+    sonarSweep.solve(loadFirstMeasurements("testInput.txt"));
+    sonarSweep.solve(loadFirstMeasurements("input.txt"));
 
-    measurements = loadFirstMeasurements("input.txt");
-    sonarSweep.solve(measurements);
-
-    measurements = loadSecondMeasurements("testInput.txt");
-    sonarSweep.solve(measurements);
-
-    measurements = loadSecondMeasurements("input.txt");
-    sonarSweep.solve(measurements);
+    sonarSweep.solve(loadSecondMeasurements("testInput.txt"));
+    sonarSweep.solve(loadSecondMeasurements("input.txt"));
   }
 
   private static Integer[] loadFirstMeasurements(final String measurementFile) {
@@ -60,7 +56,7 @@ public class SonarSweep {
       }
       previousMeasurement = measurement;
     }
-    System.out.printf("Increased measurements: %d%n", increasedMeasurements);
+    out.printf("Increased measurements: %d%n", increasedMeasurements);
   }
 
   private boolean isMeasurable(Integer previousMeasurement, Integer measurement) {
